@@ -1,14 +1,40 @@
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%; }
+  font-size: 250%;
+}
 
 h2, h3 {
-  color: #444;
+  color: #22746b;
+  display: inline-block;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter; }
+  font-weight: lighter;
+  margin: 0 0 0 5px;
+}
 
 body {
-  margin: 2em; }
+  background-color: #3f3f3f;
+  color: #a6a6a6;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 2em;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  background-color: #2a2a2a;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+button {
+  background-color: #2a2a2a;
+  border-radius: 20%;
+  color: #a6a6a6;
+  margin: 5px;
+}
+
 
 /*# sourceMappingURL=style.css.map */

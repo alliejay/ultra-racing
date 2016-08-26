@@ -1,0 +1,19 @@
+<p class='total'>There are {{totalCarParts()}} total parts in stock.</p>
+<ul>
+    <li *ngFor="let carPart of carParts" [class.featured]='carPart.featured'>
+        <img class='thumbnail' [src]='carPart.image'>
+        <h2 class='name'>{{carPart.name | uppercase}}</h2>
+        <p class='description'>{{carPart.description}}</p>
+        <p class='description' *ngIf="carPart.inStock > 0">{{carPart.inStock}} in stock</p>
+        <p class='description' *ngIf="carPart.inStock === 0">Out of Stock</p>
+        <p class='price'>{{carPart.price | currency: 'USD': true}}</p>
+
+        <div>
+         <p>Quantity Selected:
+             <button class="increase" (click)="upQuantity(carPart)">+</button>
+             {{carPart.quantity}}
+            <button class="decrease" (click)="downQuantity(carPart)">-</button>
+         </p>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,27 @@
+.total {
+    background-color: #2a2a2a;
+    margin: 0 0 10px 40px;
+    padding: 10px;
+}
+
+.thumbnail {
+    display: inline-block;
+}
+
+.thumbnail, .name {
+    vertical-align: middle;
+}
+
+.description {
+    color: #f1f1f1;
+    font-size: small;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.featured {
+    background-color: #333333;
+    border: 3px solid #4371d0;
+}

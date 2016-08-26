@@ -1,48 +1,41 @@
  import { Component } from '@angular/core';
+ import { CarPart } from './car-part';
+ import { RacingDataService } from './racing-data-service';
+
 
  @Component({
     selector: 'car-parts',
-    template: `<ul>
-     <li *ngFor="let carPart of carParts">
-       <h2>{{carPart.name | uppercase}}</h2>
-        <p>{{carPart.description}}</p>
-        <p *ngIf="carPart.inStock > 0">{{carPart.inStock}}</p>
-        <p *ngIf="carPart.inStock === 0">Out of Stock</p>
-        <p>{{carPart.price | currency: 'USD': true}}</p>
-      </li>
-     </ul>`
+    templateUrl: 'app/car-parts.component.html',
+    styleUrls: ['app/car-parts.component.css']
 })
 
- export class carPartsComponent {
-     carParts = [{
-         'id': 1,
-         'name': "Super Tires",
-         'description': 'These tires are the very best',
-         'inStock': 5,
-         'price': 4.99
-     },
-         {
-             'id': 2,
-             'name': "Reinforced Shocks",
-             'description': 'Shocks made from kyptonite',
-             'inStock': 4,
-             'price': 10.99
-         },
-         {
-             'id': 3,
-             'name': "Kitty Toys",
-             'description': 'Kitty want to drive too',
-             'inStock': 0,
-             'price': 6.99
-         }];
+ export class CarPartsComponent {
+     carParts: CarPart[];
+
+     constructor(private racingDataService: RacingDataService) { }
+
+     ngOnInit() {
+         this.racingDataService.getCarParts()
+         .subscribe(carParts => this.carParts = carParts);
+     }
 
      totalCarParts() {
          let sum = 0;
-         for (let carPart of this.carParts){
-             sum += carPart.inStock;
+         if(Array.isArray(this.carParts)) {
+             for (let carPart of this.carParts) {
+                 sum += carPart.inStock;
+             }
          }
          return sum;
-     };
+     }
+
+     upQuantity(carPart) {
+         if(carPart.quantity < carPart.inStock) carPart.quantity++;
+     }
+
+     downQuantity(carPart) {
+         if (carPart.quantity != 0) carPart.quantity--;
+     }
  }
 
 
